@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head th:replace="layout :: head">
+        
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <header th:replace="layout :: header"></header>
+        <div class="container">
+            <br/>
+            <div class="card">
+                <div class="card-header">
+                    <b class="tituloPrincipal">DATOS BENEFICIARIO</b>
+                </div>
+                <div class="card-body mt-3">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6"><b class="tituloTexto">NOMBRE: </b><label th:if="${session.user!=null}" th:text="${session.user.nombre}" />
+                            </div><div class="col-md-6"><b class="tituloTexto">GENERO: </b><label th:if="${session.user!=null}" th:text="${session.user.genero}" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><b class="tituloTexto">FECHA NACIMIENTO: </b><label th:if="${session.user!=null}" th:text="${#dates.format(session.user.fechaNac, 'dd/MM/yyyy')}" />
+                            </div><div class="col-md-6"><b class="tituloTexto">CURP: </b><label th:if="${session.user!=null}" th:text="${session.user.curp}" /></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form th:action="@{/user/update}" th:object="${user}" method="post">
+            <div class="card">
+                <div class="card-header">
+                    <b class="tituloPrincipal">DATOS ADICIONALES</b>
+                </div>
+                <div class="card-body mt-3">
+                    <div class="panel-body">
+                        <div class="row">
+                            
+                            <div class="col-md-6"><b class="tituloTexto">CORREO ELECTRONICO: </b><input th:if="${session.user!=null}" type="text" name="correo" class="form-control" th:value="${session.user.correo}" required/>
+                            </div><div class="col-md-6"><b class="tituloTexto">TELEFONO MOVIL: </b><input th:if="${session.user!=null}" type="text" name="telMovil" class="form-control" th:value="${session.user.telMovil}" required/></div>
+                            <div class="col-md-6"><b class="tituloTexto">TELEFONO LOCAL: </b><input th:if="${session.user!=null}" type="text" name="telOtro" class="form-control" th:value="${session.user.telOtro}" required/></div>
+                            <div class="col-md-6"><br/><button id="submit" type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> <span>Guardar y continuar</span> </button></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </form>
+            <div class="card">
+                <div class="card-header">
+                <b class="tituloPrincipal">INFORMACION LABORAL</b>
+                </div>
+                <div class="card-body mt-3">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6"><b class="tituloTexto">NOMBRE CT: </b><label th:if="${session.user!=null}" th:text="${session.user.nombreCT}" />
+                            </div><div class="col-md-6"><b class="tituloTexto">C.C.T: </b><label th:if="${session.user!=null}" th:text="${session.user.cct}" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><b class="tituloTexto">DIRECTOR: </b><label th:if="${session.user!=null}" th:text="${session.user.nombreDirector}" />
+                            </div><div class="col-md-6"><b class="tituloTexto">DOMICILIO: </b><label th:if="${session.user!=null}" th:text="${session.user.domicilio}" />
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col-md-6"><b class="tituloTexto">LOCALIDAD: </b><label th:if="${session.user!=null}" th:text="${session.user.localidad}" />
+                            </div><div class="col-md-6"><b class="tituloTexto">MUNICIPIO: </b><label th:if="${session.user!=null}" th:text="${session.user.municipio}" />
+                        </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><b class="tituloTexto">ZONA ESCOLAR: </b><label th:if="${session.user!=null}" th:text="${session.user.zonaCt}" />
+                            </div><div class="col-md-6"><b class="tituloTexto">SECTOR ESCOLAR: </b><label th:if="${session.user!=null}" th:text="${session.user.sector}" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+                </div>
+    </body>
+</html>

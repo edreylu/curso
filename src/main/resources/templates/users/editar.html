@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: head">
+        
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <header th:replace="layout :: header"></header>
+       <div class="container mt-4 col-lg-4">
+            <div class="card border-info">
+                <div class="card-header bg-info">
+                    <h4> Editar Registro</h4>    
+                </div>
+                <div class="card-body">
+                    <form method="post" action="#" th:action="@{/admin/usuarios/update/{id}(id=${usuario.noUsuario})}" th:object="${usuario}">
+                        <label>Usuario</label>
+                        <input type="text" name="clave" class="form-control" th:field="${usuario.clave}" required/>
+                        <label>Nombre</label>
+                        <input type="text" name="nombre" class="form-control" th:field="${usuario.nombre}" required/>
+                         <label>Apellido Paterno</label>
+                        <input type="text" name="apellidoPaterno" class="form-control" th:field="${usuario.apellidoPaterno}" required/>
+                        <label>Apellido Materno</label>
+                        <input type="text" name="apellidoMaterno" class="form-control" th:field="${usuario.apellidoMaterno}" required/>
+                        <label>Correo</label>
+                        <input type="text" name="correo" class="form-control" th:field="${usuario.correo}" required/>
+                        <label>Telefono</label>
+                        <input type="text" name="telefono" class="form-control" th:field="${usuario.telefono}" required/>
+                        <input type="submit" class="btn btn-success" value="Actualizar">
+                        <a href="../principal">Regresar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="layout :: footer" class="bg-dark"></footer>
+    </body>
+</html>

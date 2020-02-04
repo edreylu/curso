@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head th:replace="layout :: head">
+        
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <header th:replace="layout :: header"></header>
+        <div class="container">
+            <br/>
+            <div class="card">
+                <div class="card-header">
+                    <b class="tituloPrincipal">DATOS CURSO</b>
+                </div>
+                <div class="card-body mt-3">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6"><b class="tituloTexto">NOMBRE CURSO: </b><label th:text="${curso.nombreCurso}" />
+                            </div><div class="col-md-6"><b class="tituloTexto">DIRIGIDO A: </b><label th:text="${curso.dirigidoA}" /></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6"><b class="tituloTexto">HORAS PRESENCIALES: </b><label th:text="${curso.horasPresenciales}" />
+                            </div><div class="col-md-6"><b class="tituloTexto">HORAS EN LINEA: </b><label th:text="${curso.horasLinea}" /></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form th:action="@{/user/update}" th:object="${user}" method="post">
+            <div class="card">
+                <div class="card-header">
+                    <b class="tituloPrincipal">DATOS SEDE</b>
+                </div>
+                <div class="card-body mt-3">
+                    <div class="panel-body">
+                        <div class="row">
+                            
+                            <div class="col-md-6"><b class="tituloTexto">SEDE: </b><input th:text="${cursosede.nombreSede}" />
+                            </div><div class="col-md-6"><b class="tituloTexto">MUNICIPIO: </b><input th:text="${cursosede.municipio}" /></div>
+                            <div class="col-md-6"><b class="tituloTexto">DISPONIBILIDAD: </b><input th:text="1"/></div>
+                            <div class="col-md-6"><br/><button id="submit" type="submit" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> <span>Continuar</span> </button></div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </form>
+                </div>
+    </body>
+</html>

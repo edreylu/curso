@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head">
+        <meta charset="UTF-8"/>
+        <title th:text="${titulo}"></title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
+              crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://kit.fontawesome.com/cff6dddb5f.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" th:href="@{/css/estilos.css}">
+        <script src="/js/alerta.js"></script>
+    </head>
+    <body>
+        <header th:fragment="header">
+            <nav class="navbar navbar-expand-lg navbar navbar-light" style="background-color:#9c9c9c;">
+                <a class="navbar-brand" th:href="@{/}" style="width: 10%;">
+                    <img th:src="@{../../../img/logosep.png}" width="100" height="35" alt="">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		  </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width: 90%;">
+                <div class="text-center" style="width: 70%;"><b>PROGRAMA PARA EL DESARROLLO PROFESIONAL DOCENTE PRODEP 2019 Tipo Básico</b></div>
+                        
+                    
+                    <form class="form-inline my-2 my-lg-0" style="width: 30%;">
+                        <label th:if="${session.user!=null}" th:text="${session.user.nombre}" style="color: #ffffff;"></label>
+                        <a class="nav-link" th:if="${session.user!=null}" th:text="Salir" th:onclick="return confirmCloseSession();" th:href="@{/logout}" style="color: lightgray;"></a>
+                    </form>
+            </div>
+            </nav>
+        </header>
+
+
+        <div class="container">
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: head">
+        
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <header th:replace="layout :: header"></header>
+        <div class="container mt-4 col-lg-4">
+            <div class="card border-info">
+                <div class="card-header bg-info">
+                    <h4> Agregar Nuevo Registro</h4>    
+                </div>
+                <div class="card-body">
+                    <form method="post" action="#" th:action="@{/admin/users/agregar}" th:object="${user}">
+                        <label>User Name</label>
+                        <input type="text" name="userName" class="form-control" required/>
+                        <label>Password</label>
+                        <input type="text" name="password" class="form-control" required/>
+                        <label>Authority</label>
+                        <input type="text" name="authority" class="form-control" required/>
+                        <br/>
+                        <input type="submit" class="btn btn-success" value="Agregar">
+                        <a href="principal">Regresar</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer th:replace="layout :: footer" class="bg-dark"></footer>
+    </body>
+</html>

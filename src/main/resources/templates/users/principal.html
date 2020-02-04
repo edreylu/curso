@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout :: head">
+        
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="../../static/js/alerta.js"></script>
+    </head>
+    <body>
+        <header th:replace="layout :: header"></header>
+        
+        <div class="card border-info">
+            
+            <div class="card-header bg-info text-white">
+                <a href="agregar" class="btn btn-light">Agregar Registro</a>
+            </div>
+            <div class="card-body">
+                <table border="1" class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>NOMBRE</th>
+                            <th>PASSWORD</th>
+                            <th>AUTHORITY</th>
+                            <th>EDITAR</th>
+                            <th>ELIMINAR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="dato: ${lista}">
+                            <td th:text="${dato.userName}"></td>
+                            <td th:text="${dato.password}"></td>
+                            <td th:text="${dato.authority}"></td>
+                            <td> 
+                                <a class="btn btn-warning" onclick="mensaje();" th:href="@{/admin/users/editar/{id}(id=${dato.userName})}">Editar</a>
+                                </td>
+                                <td>
+                                <a class="btn btn-danger" th:href="@{/admin/users/eliminar/{id}(id=${dato.userName})}">Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <footer th:replace="layout :: footer" class="bg-dark"></footer>
+    </body>
+</html>

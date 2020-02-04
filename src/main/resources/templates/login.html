@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+      >
+    <head th:replace="layout :: head">
+        <title th:text="${titulo}"></title>
+
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+
+
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        
+    </head>
+    <body onload="nobackbutton();">
+        <header th:replace="layout :: header"></header>
+        <div class="container mt-3 col-lg-3">
+            <div class="modal-dialog text-center">
+                <div class="modal-content">
+                    <div class="col-12 user-img">
+                        <img th:src="@{/img/logosep.png}" width="260" height="130"/>
+                    </div>
+                    <br/>
+                    <form id="loginForm" class="col-12" th:action="@{/loginProcess}" modelAttribute="login" method="post">
+                        <div class="form-group" id="user-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Rfc" name="rfc" required/>
+                        </div>
+                        <div class="form-group" id="user-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                            <input type="text" class="form-control" placeholder="Curp" name="curp" required/>
+                        </div>
+                        <div class="form-group" id="user-group">
+                       <div class="g-recaptcha text-center" 
+                            data-sitekey="6LdGeDcUAAAAALfoMZ2Ltv4EE6AHIYb8nSxhCRh_" data-callback="enabledSubmit"></div>
+                            </div>
+                        <hr />
+                        <button id="submit" type="submit" class="btn btn-primary" disabled>
+                            <i class="fas fa-sign-in-alt"></i> <span>Ingresar</span> </button>
+                        <br/>
+                    </form>
+                    <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                        Curp o rfc invalido.
+                    </div>
+                    <div th:if="${param.logout}" class="alert alert-success" role="alert">
+                        Has salido de session.
+                    </div>
+                </div>
+            </div>
+            <br/>
+        </div>
+        
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    </body>
+</html>
